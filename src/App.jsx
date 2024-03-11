@@ -3,6 +3,7 @@ import Header from "./Components/Header"
 import ArticleList from "./Components/ArticleList"
 import Home from "./Components/Home"
 import UserList from "./Components/UserList"
+import ArticlePage from "./Components/ArticlePage"
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
           <Route path="/home" element={ <Home/> }/>
           <Route path="/articles" element={ <ArticleList/> }/>
           <Route path="/profile" element={ <UserList/> }/>
+          <Route path="/article-page/:article_id" element={ <ArticlePage/> }/>
         </Routes>
     </>
   )

@@ -6,7 +6,7 @@ const Home = () => {
         <div>
             <h1>HOME</h1>
             <div className='flex justify-evenly flex-auto'>
-                <ArticleList/>
+                <ArticleList key="articleList"/>
             </div>
 
         </div>
