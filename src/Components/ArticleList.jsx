@@ -19,11 +19,9 @@ const ArticleList = () => {
       <p>Loading...</p>
     </div>
   ) : (
-    <div
-      className="card h-full justify-center items-center flex-col"
-    >
+    <div  className="card h-full justify-center items-center flex-col">
       {articles.map((article) => {
-        return <ArticleCard key={article.id} article={article} />;
+        return <ArticleCard key={article.article_id} article={article} />;
       })}
     </div>
   );
