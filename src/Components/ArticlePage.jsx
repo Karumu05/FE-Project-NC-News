@@ -10,7 +10,7 @@ import IndividualComment from "./IndividualComment";
 const ArticlePage = () => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const [sArticle, setSArticle] = useState(null);
+  const [sArticle, setSArticle] = useState({});
   const [comments, setComments] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const [votes, setVotes] = useState(0);
@@ -28,7 +28,7 @@ const ArticlePage = () => {
       setComments(result[1]);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, []);
 
   function handleClick() {
     if (!isClicked){
@@ -52,7 +52,7 @@ const ArticlePage = () => {
     </div>
   ) : (
     <div
-      key={article_id}
+      key={sArticle.title}
       className="grid grid-template-columns: repeat(2, 1fr) gap-1"
     >
       <div className="flex justify-center w-auto h-auto col-span-2 p-3">

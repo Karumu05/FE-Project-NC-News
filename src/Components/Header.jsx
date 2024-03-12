@@ -15,7 +15,7 @@ const Header = () => {
           <img
             src="src/Assets/Logo.png"
             className="h-8"
-            alt="NC Marketplace logo"
+            alt="NC News logo"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             NC News

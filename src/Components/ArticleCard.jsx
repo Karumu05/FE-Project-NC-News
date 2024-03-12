@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article }) => {
   return (
-    <div className="p-2" key={article.article_id}>
+    <div className="p-2">
       <Link to={`/article-page/${article.article_id}`} className="flex items-center bg-white border border-gray-200 rounded-lg shadow flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
         <div className="">
         <img
@@ -13,7 +13,7 @@ const ArticleCard = ({ article }) => {
         />
         </div>
         <div className="w-2/3">
-        <div className="flex flex-col justify-between p-4 leading-normal" key={article.title}>
+        <div className="flex flex-col justify-between p-4 leading-normal">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {article.title}
           </h5>
