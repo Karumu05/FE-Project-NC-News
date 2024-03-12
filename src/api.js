@@ -22,4 +22,10 @@ export const fetchCommentsByArticle = (article_id) => {
     })
 }
 
+export const updateArticleVote = (article_id, votes) => {
+    return newsAPI.patch(`/articles/${article_id}`, {
+        inc_votes: votes
+    })
+}
+
 

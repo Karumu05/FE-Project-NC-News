@@ -4,9 +4,8 @@ import ArticleList from './ArticleList';
 const Home = () => {
     return (
         <div>
-            <h1>HOME</h1>
             <div className='flex justify-evenly flex-auto'>
-                <ArticleList key="articleList"/>
+                <ArticleList key="article-list"/>
             </div>
 
         </div>
