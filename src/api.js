@@ -16,4 +16,10 @@ export const fetchArticlesById = (article_id) => {
     })
 }
 
-fetchArticlesById()
+export const fetchCommentsByArticle = (article_id) => {
+    return newsAPI.get(`/articles/${article_id}/comments`).then((result) => {
+        return result.data.comments
+    })
+}
+
+

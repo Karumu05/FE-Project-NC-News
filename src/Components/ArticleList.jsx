@@ -17,7 +17,7 @@ const ArticleList = () => {
 
 
     return isLoading ? <div key="loading"><p>Loading...</p></div> : (
-         <div key={"mapped"} className='flex justify-center items-center flex-col'>
+         <div key={"mapped"} className='card h-full justify-center items-center flex-col'>
             {articles.map((article) => {
                 return <ArticleCard key={article.id} article={article}/>
             })}
