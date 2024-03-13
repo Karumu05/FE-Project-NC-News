@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../Contexts/User";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState('Home')
+
+    const user = useContext(UserContext)
 
   return (
     <nav className="bg-zinc-400 border-gray-200 dark:bg-gray-900">
@@ -19,6 +22,9 @@ const Header = () => {
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             NC News
+          </span>
+          <span className="self-center font-semibold whitespace-nowrap dark:text-white">
+            Logged In User: <span className="underline">{user.username}</span> 
           </span>
         </Link>
         <button

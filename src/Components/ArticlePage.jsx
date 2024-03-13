@@ -16,6 +16,7 @@ const ArticlePage = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [votes, setVotes] = useState(0);
   const [error, setError] = useState(null);
+  const [deletedComment, setDeletedComment] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -23,21 +24,21 @@ const ArticlePage = () => {
       fetchArticlesById(article_id),
       fetchCommentsByArticle(article_id),
     ]).then((result) => {
-      const initialVotes = result[0][0]?.votes;
+      const initialVotes = result[0][0].votes;
       setVotes(initialVotes);
       setSArticle(result[0][0]);
       setComments(result[1]);
       setIsLoading(false);
     });
-  }, []);
-
+  }, [deletedComment]);
 
   function handleClick() {
     if (!isClicked) {
       setIsClicked(true);
     }
     setVotes((current) => {
-      return current + 1});
+      return current + 1;
+    });
     setError(null);
     updateArticleVote(article_id, votes + 1).catch((error) => {
       setVotes((current) => current - 1);
@@ -81,7 +82,12 @@ const ArticlePage = () => {
         <div className="flex flex-wrap p-3 h-full justify-evenly">
           {comments.map((comment) => {
             return (
-              <IndividualComment comment={comment} key={comment.comment_id} />
+              <IndividualComment
+                comment={comment}
+                key={comment.comment_id}
+                setDeletedComment={setDeletedComment}
+                deletedComment={deletedComment}
+              />
             );
           })}
         </div>
