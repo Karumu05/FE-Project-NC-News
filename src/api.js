@@ -28,4 +28,10 @@ export const updateArticleVote = (article_id, votes) => {
     })
 }
 
+export const postNewCommentToArticle = (article_id, commentToPost) => {
+    return newsAPI.post(`/articles/${article_id}/comments`, commentToPost ).then((result) => {
+        return result.data.addedComment[0]
+    })
+}
+
 

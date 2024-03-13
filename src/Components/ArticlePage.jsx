@@ -6,15 +6,16 @@ import {
   updateArticleVote,
 } from "../api";
 import IndividualComment from "./IndividualComment";
+import AddComment from "./AddComment";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [sArticle, setSArticle] = useState({});
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
   const [votes, setVotes] = useState(0);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -22,8 +23,8 @@ const ArticlePage = () => {
       fetchArticlesById(article_id),
       fetchCommentsByArticle(article_id),
     ]).then((result) => {
-      const initialVotes = result[0][0]?.votes 
-      setVotes(initialVotes)
+      const initialVotes = result[0][0]?.votes;
+      setVotes(initialVotes);
       setSArticle(result[0][0]);
       setComments(result[1]);
       setIsLoading(false);
@@ -31,19 +32,22 @@ const ArticlePage = () => {
   }, []);
 
   function handleClick() {
-    if (!isClicked){
-      setIsClicked(true)
+    if (!isClicked) {
+      setIsClicked(true);
     }
     setVotes((currentVotes) => {
       updateArticleVote(article_id, currentVotes + 1)
-      .then(() => {setVotes(currentVotes + 1)
-      setError(null)})
-      .catch((err) => {setVotes(currentVotes - 1)
-      setError('Something went wrong please try again.')})
-      
-      return currentVotes + 1
-    })
-    
+        .then(() => {
+          setVotes(currentVotes + 1);
+          setError(null);
+        })
+        .catch((err) => {
+          setVotes(currentVotes - 1);
+          setError("Something went wrong please try again.");
+        });
+
+      return currentVotes + 1;
+    });
   }
 
   return isLoading ? (
@@ -69,7 +73,9 @@ const ArticlePage = () => {
         <h1>Article votes: {votes}</h1>
         <span className="ml-10 border rounded border-lime-500 border-double ring-2 ring-lime-500">
           {error ? <p>{error}</p> : null}
-          <button onClick={handleClick} disabled={isClicked}>👍</button>
+          <button onClick={handleClick} disabled={isClicked}>
+            👍
+          </button>
         </span>
       </div>
       <div className="col-span-2 text-center">
@@ -77,16 +83,22 @@ const ArticlePage = () => {
       </div>
       <div className="col-span-2">
         <h2>Comment count: {sArticle.comment_count}</h2>
-        <div className="card  items-center">
+        <div className="flex flex-wrap p-3 h-full justify-evenly">
           {comments.map((comment) => {
             return (
               <IndividualComment comment={comment} key={comment.comment_id} />
             );
           })}
         </div>
-        commments
       </div>
-      <div className="col-span-2 card h-auto]">Add comment</div>
+      <div className="col-span-2 card h-auto relative h-100vh ">
+        <AddComment
+          key="Add-comments"
+          article_id={article_id}
+          comments={comments}
+          setComments={setComments}
+        />
+      </div>
     </div>
   );
 };

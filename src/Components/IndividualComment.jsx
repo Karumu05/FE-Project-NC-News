@@ -1,6 +1,7 @@
 import React from "react";
 
 const IndividualComment = ({ comment }) => {
+
   const timeReg = /(\d{2}:\d{2})/g;
   const displayTime = comment.created_at.match(timeReg);
 
