@@ -41,3 +41,10 @@ export const deleteCommentFromArticle = (comment_id) => {
     return { msg: `Comment Deleted` };
   });
 };
+
+export const fetchAllUsers = () => {
+  return newsAPI.get('/users').then((result) => {
+    return result.data.users
+  })
+}
+
