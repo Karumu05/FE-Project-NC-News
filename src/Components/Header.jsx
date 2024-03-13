@@ -1,12 +1,18 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../Contexts/User";
 
-const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [currentPage, setCurrentPage] = useState('Home')
+const Header = ({ setCurrentUser }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState("Home");
 
-    const user = useContext(UserContext)
+  const navigate = useNavigate();
+  const user = useContext(UserContext);
+
+  function handleLogOut() {
+    setCurrentUser({});
+    navigate("/home");
+  }
 
   return (
     <nav className="bg-zinc-400 border-gray-200 dark:bg-gray-900">
@@ -15,16 +21,12 @@ const Header = () => {
           to="/home"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img
-            src="src/Assets/Logo.png"
-            className="h-8"
-            alt="NC News logo"
-          />
+          <img src="src/Assets/Logo.png" className="h-8" alt="NC News logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             NC News
           </span>
           <span className="self-center font-semibold whitespace-nowrap dark:text-white">
-            Logged In User: <span className="underline">{user.username}</span> 
+            Logged In User: <span className="underline">{user.username}</span>
           </span>
         </Link>
         <button
@@ -58,6 +60,22 @@ const Header = () => {
           }`}
         >
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            {user.username ? (
+              <li>
+                <Link
+                  to="/profile"
+                  className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0 dark:text-white ${
+                    currentPage === "Profile"
+                      ? "md:text-blue-700 bg-blue-700 md:dark:text-blue-500"
+                      : ""
+                  }`}
+                  onClick={(e) => setCurrentPage(e.target.innerText)}
+                >
+                  Profile
+                </Link>
+              </li>
+            ) : null}
+
             <li>
               <Link
                 to="/home"
@@ -87,17 +105,27 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/profile"
+                to="/log-in"
                 className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0 dark:text-white ${
-                  currentPage === "Profile"
+                  currentPage === "Log In"
                     ? "md:text-blue-700 bg-blue-700 md:dark:text-blue-500"
                     : ""
                 }`}
                 onClick={(e) => setCurrentPage(e.target.innerText)}
               >
-                Profile
+                Log In
               </Link>
             </li>
+            {user.username ? (
+              <li>
+                <button
+                  className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0 dark:text-white`}
+                  onClick={handleLogOut}
+                >
+                  Log Out
+                </button>
+              </li>
+            ) : null}
           </ul>
         </div>
       </div>
