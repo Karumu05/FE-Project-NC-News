@@ -31,22 +31,17 @@ const ArticlePage = () => {
     });
   }, []);
 
+
   function handleClick() {
     if (!isClicked) {
       setIsClicked(true);
     }
-    setVotes((currentVotes) => {
-      updateArticleVote(article_id, currentVotes + 1)
-        .then(() => {
-          setVotes(currentVotes + 1);
-          setError(null);
-        })
-        .catch((err) => {
-          setVotes(currentVotes - 1);
-          setError("Something went wrong please try again.");
-        });
-
-      return currentVotes + 1;
+    setVotes((current) => {
+      return current + 1});
+    setError(null);
+    updateArticleVote(article_id, votes + 1).catch((error) => {
+      setVotes((current) => current - 1);
+      setError("Something went wrong, please try again.", error);
     });
   }
 
