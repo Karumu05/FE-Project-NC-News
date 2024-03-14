@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import UserContext from "../Contexts/User";
 import { deleteCommentFromArticle } from "../api";
 
-const IndividualComment = ({ comment, setDeletedComment, deletedComment }) => {
+const IndividualComment = ({ comment, setDeletedComment, setComments, comments }) => {
   const timeReg = /(\d{2}:\d{2})/g;
   const displayTime = comment.created_at.match(timeReg);
   const user = useContext(UserContext);
@@ -15,8 +15,9 @@ const IndividualComment = ({ comment, setDeletedComment, deletedComment }) => {
         setError(false);
         setComments([...comments]);
       })
-      .catch(() => {
+      .catch((err) => {
         setError(true);
+        console.log(err);
       });
     setDeletedComment(false);
   }
