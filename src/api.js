@@ -1,11 +1,20 @@
 import axios from "axios";
+import { createClient } from 'pexels';
+
+const client = createClient('f8BYbiAbrqkLEkgKm0FWEwpGwpIpKRSLGHtFlmdV8rCCwpkapB3y3nAy');
+
+export const fetchPhotos = (query) => {
+  return client.photos.search({query, per_page: 1}).then((result) => {
+    return result.photos[0]
+  })
+}
 
 const newsAPI = axios.create({
   baseURL: "https://project-nc-news-9s8b.onrender.com/api",
 });
 
-export const fetchArticles = () => {
-  return newsAPI.get("/articles").then((result) => {
+export const fetchArticles = (topic) => {
+  return newsAPI.get("/articles",{params: {topic: topic}}).then((result) => {
     return result.data.articles;
   });
 };
@@ -45,6 +54,12 @@ export const deleteCommentFromArticle = (comment_id) => {
 export const fetchAllUsers = () => {
   return newsAPI.get('/users').then((result) => {
     return result.data.users
+  })
+}
+
+export const fetchAllTopics = () => {
+  return newsAPI.get('/topics').then((result) => {
+    return result.data.topics
   })
 }
 

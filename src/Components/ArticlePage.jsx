@@ -86,7 +86,8 @@ const ArticlePage = () => {
                 comment={comment}
                 key={comment.comment_id}
                 setDeletedComment={setDeletedComment}
-                deletedComment={deletedComment}
+                setComments={setComments}
+                comments={comments}
               />
             );
           })}
