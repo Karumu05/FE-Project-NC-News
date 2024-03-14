@@ -8,7 +8,7 @@ const Home = () => {
         <div className="flex flex-col justify-start flex-auto">
           <TopicsList />
         </div>
-      <div className="flex justify-evenly flex-auto">
+      <div className="flex justify-evenly flex-auto flex-col">
         <ArticleList key="article-list" />
       </div>
     </div>
