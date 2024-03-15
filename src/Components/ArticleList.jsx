@@ -7,7 +7,6 @@ const ArticleList = () => {
   const [articles, setArticles] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-<<<<<<< Updated upstream
   const {topic} = useParams()
 
   useEffect(() => {
@@ -17,7 +16,6 @@ const ArticleList = () => {
       setIsLoading(false);
     });
   }, [topic]);
-=======
   const [searchQuery, setSearchQuery] = useState({});
   const [displayError, setDisplayError] = useState({})
   const [isError, setIsError] = useState(false)
@@ -50,7 +48,6 @@ const ArticleList = () => {
 
     })
   }, [topic, searchQuery]);
->>>>>>> Stashed changes
 
   return isError ? (
     <div>
