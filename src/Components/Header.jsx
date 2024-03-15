@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../Contexts/User";
+import logo from "src/Assets/Logo.png"
 
 const Header = ({ setCurrentUser }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ const Header = ({ setCurrentUser }) => {
           to="/home"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img src={`/src/Assets/Logo.png`} className="h-8" alt="NC News logo" />
+          <img src={logo} className="h-8" alt="NC News logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
             NC News
           </span>
