@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../Contexts/User";
-import logo from "src/Assets/Logo.png"
+import logo from "../Assets/Logo.png"
 
 const Header = ({ setCurrentUser }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
