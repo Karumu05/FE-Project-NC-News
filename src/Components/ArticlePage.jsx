@@ -67,7 +67,7 @@ const ArticlePage = () => {
       </div>
       <div className="flex items-center flex-shrink text-2xl text-center justify-center ">
         <h1>Article votes: {votes}</h1>
-        <span className="ml-10 border rounded border-lime-500 border-double ring-2 ring-lime-500">
+        <span className="ml-10 border rounded border-lime-500 border-double ring-2 ring-lime-500 bg-gray-800">
           {error ? <p>{error}</p> : null}
           <button onClick={handleClick} disabled={isClicked}>
             👍

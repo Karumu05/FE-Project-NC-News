@@ -24,19 +24,19 @@ const IndividualComment = ({ comment, setDeletedComment, setComments, comments }
 
   return (
     <div className="flex items-center gap-2.5">
-      <div className="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700">
+      <div className="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 rounded-e-xl rounded-es-xl bg-gray-700">
         <div className="flex items-center space-x-2 rtl:space-x-reverse">
-          <span className="text-sm font-semibold text-gray-900 dark:text-white">
+          <span className="text-sm font-semibold text-white">
             {comment.author}
           </span>
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+          <span className="text-sm font-normal text-gray-400">
             {displayTime}
           </span>
 
           {user.username === comment.author ? (
             <span>
               <button onClick={handleDelete}>
-                <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+                <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg bg-red-800 text-red-200">
                   <svg
                     className="w-5 h-5"
                     aria-hidden="true"
@@ -53,11 +53,11 @@ const IndividualComment = ({ comment, setDeletedComment, setComments, comments }
           ) : null}
         </div>
         {error ? alert("Comment not deleted, please try again") : null}
-        <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
+        <p className="text-sm font-normal py-2.5 text-white">
           {comment.body}
         </p>
 
-        <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+        <span className="text-sm font-normal text-gray-400">
           Votes: {comment.votes}
         </span>
       </div>

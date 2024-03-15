@@ -18,10 +18,10 @@ const TopicsCard = ({ topic }) => {
         <div className='p-2'>
         <Link
           to={`/articles/${topic.slug}`}
-          className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+          className="flex flex-col items-center  border border-gray-200 rounded-lg shadow  border-gray-700 bg-gray-800 hover:bg-gray-700">
             <img className="object-cover w-full rounded-t-lg h-96 " src={photo} alt={photo?.alt}/>
             <div className="flex flex-col justify-between p-4 leading-normal">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{topic.slug}</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{topic.slug}</h5>
             </div>
         </Link>
         </div>

@@ -17,7 +17,7 @@ const SortByDropdown = ({ label, sortByItems, setSearchQuery }) => {
         {label}
       </button>
       {isOpen && (
-        <ul className="right-0 mt-2 w-40 rounded-lg shadow-md bg-white z-50">
+        <ul className="right-0 mt-2 w-40 rounded-lg shadow-md bg-gray-500 text-white z-50">
           {sortByItems.map((sortByItem) => {
             return (
               <SortByDropdownItem

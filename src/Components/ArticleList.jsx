@@ -59,7 +59,7 @@ const ArticleList = () => {
     </div>
   ) : (
     <>
-      <div className="flex flex-row justify-evenly items-center bg-white border border-gray-200 rounded-lg shadow border-gray-700 dark:bg-gray-800  m-2 p-2">
+      <div className="flex flex-row justify-evenly items-center rounded-lg shadow border-gray-700 bg-gray-800  m-2 p-2">
         <SortByDropdown
           label="Sort Articles By ..."
           sortByItems={sortByItems}

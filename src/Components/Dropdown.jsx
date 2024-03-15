@@ -18,7 +18,7 @@ const Dropdown = ({ label, sortByItems, ascDesc, setSearchQuery }) => {
       </button>
 
       {isOpen && (
-        <ul className="right-0 mt-2 w-40 rounded-lg shadow-md bg-white z-50">
+        <ul className="right-0 mt-2 w-40 rounded-lg shadow-md bg-gray-500 text-white z-50">
           {ascDesc.map((ascDesc) => {
             return (
               <DropdownItem

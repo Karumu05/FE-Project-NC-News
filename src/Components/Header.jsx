@@ -15,24 +15,24 @@ const Header = ({ setCurrentUser }) => {
   }
 
   return (
-    <nav className="bg-zinc-400 border-gray-200 dark:bg-gray-900">
+    <nav className=" border-gray-200 bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to="/home"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img src="src/Assets/Logo.png" className="h-8" alt="NC News logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
             NC News
           </span>
-          <span className="self-center font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center font-semibold whitespace-nowrap text-white">
             Logged In User: <span className="underline">{user.username}</span>
           </span>
         </Link>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden focus:outline-none focus:ring-2  text-gray-400 hover:bg-gray-700 focus:ring-gray-600"
           aria-controls="navbar-default"
           aria-expanded="false"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -59,12 +59,12 @@ const Header = ({ setCurrentUser }) => {
             isMenuOpen ? "" : "hidden"
           }`}
         >
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="font-medium flex flex-row p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-gray-800  border-gray-700">
             {user.username ? (
               <li>
                 <Link
                   to="/profile"
-                  className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0 dark:text-white ${
+                  className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0  ${
                     currentPage === "Profile"
                       ? "md:text-blue-700 bg-blue-700 md:dark:text-blue-500"
                       : ""
@@ -79,7 +79,7 @@ const Header = ({ setCurrentUser }) => {
             <li>
               <Link
                 to="/home"
-                className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0 dark:text-white ${
+                className={`block py-2 px-3  rounded md:bg-transparent md:p-0 text-white ${
                   currentPage === "Home"
                     ? "md:text-blue-700 bg-blue-700 md:dark:text-blue-500"
                     : ""
@@ -93,7 +93,7 @@ const Header = ({ setCurrentUser }) => {
             <li>
               <Link
                 to="/articles"
-                className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0 dark:text-white ${
+                className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0  ${
                   currentPage === "Articles"
                     ? "md:text-blue-700 bg-blue-700 md:dark:text-blue-500"
                     : ""
@@ -106,7 +106,7 @@ const Header = ({ setCurrentUser }) => {
             <li>
               <Link
                 to="/log-in"
-                className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0 dark:text-white ${
+                className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0  ${
                   currentPage === "Log In"
                     ? "md:text-blue-700 bg-blue-700 md:dark:text-blue-500"
                     : ""
@@ -119,7 +119,7 @@ const Header = ({ setCurrentUser }) => {
             {user.username ? (
               <li>
                 <button
-                  className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0 dark:text-white`}
+                  className={`block py-2 px-3 text-white rounded md:bg-transparent md:p-0 `}
                   onClick={handleLogOut}
                 >
                   Log Out

@@ -11,7 +11,7 @@ const DropdownItem = ({ label, value, setSearchQuery }) => {
     <div>
       <li
         onClick={handleClick}
-        className="py-1 hover:bg-gray-100 cursor-pointer"
+        className="py-1 hover:bg-blue-700 cursor-pointer"
       >
         {label}
       </li>

@@ -15,9 +15,9 @@ const TopicsList = () => {
 
     return (
         <>
-        <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow border-gray-700 dark:bg-gray-800  m-2">
+        <div className="flex flex-col items-center  border border-gray-200 rounded-lg shadow border-gray-700 bg-gray-800  m-2">
           <div className="flex flex-col justify-between p-4 leading-normal">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
               Choose a topic below
             </h5>
           </div>
