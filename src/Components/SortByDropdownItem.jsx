@@ -2,7 +2,8 @@ import React from "react";
 
 const SortByDropdownItem = ({ label, value, setSearchQuery }) => {
   const handleClick = () => {
-    setSearchQuery({ sort_by: value });
+    setSearchQuery((currentQuery) => {
+      return {...currentQuery, sort_by: value}});
   };
 
   return (

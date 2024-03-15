@@ -2,8 +2,8 @@ import React from "react";
 
 const DropdownItem = ({ label, value, setSearchQuery }) => {
   const handleClick = () => {
-    setSearchQuery(() => {
-      return { order: value };
+    setSearchQuery((currentQuery) => {
+      return {...currentQuery, order: value };
     });
   };
 
