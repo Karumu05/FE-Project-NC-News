@@ -11,6 +11,8 @@ const ArticleList = () => {
   const { topic } = useParams();
 
   const [searchQuery, setSearchQuery] = useState({});
+  const [displayError, setDisplayError] = useState({})
+  const [isError, setIsError] = useState(false)
 
   const sortByItems = [
     { value: "created_at", label: "Date" },
@@ -27,13 +29,30 @@ const ArticleList = () => {
     setIsLoading(true);
     fetchArticles(topic, searchQuery.sort_by, searchQuery.order).then(
       (result) => {
+        if (result === undefined){
+          setIsError(true)
+          setDisplayError({status: 404, data: { msg: "Not found"}})
+        }
         setArticles(result);
         setIsLoading(false);
       }
-    );
+    ).catch((err) => {
+      setIsError(true)
+      setDisplayError(err.response)
+
+    })
   }, [topic, searchQuery]);
 
-  return isLoading ? (
+  return isError ? (
+    <div>
+      {alert(`Something went wrong
+              ${displayError.status}
+              ${displayError.data.msg}`)}
+      {window.location = "/home"}
+    </div>
+  ) :
+
+   isLoading ? (
     <div key="loading-state">
       <p>Loading...</p>
     </div>
