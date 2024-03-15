@@ -76,7 +76,7 @@ const AddComment = ({ article_id, comments, setComments }) => {
                       <span className="sr-only">Error icon</span>
                     </div>
                     <div className="ms-3 text-sm  font-normal">
-                      Something went wrong, please try again
+                      Something went wrong, please try again. Make sure to check you are logged in
                     </div>
                   </div>
                 </div>

@@ -7,6 +7,7 @@ const ArticleList = () => {
   const [articles, setArticles] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+<<<<<<< Updated upstream
   const {topic} = useParams()
 
   useEffect(() => {
@@ -16,8 +17,51 @@ const ArticleList = () => {
       setIsLoading(false);
     });
   }, [topic]);
+=======
+  const [searchQuery, setSearchQuery] = useState({});
+  const [displayError, setDisplayError] = useState({})
+  const [isError, setIsError] = useState(false)
 
-  return isLoading ? (
+  const sortByItems = [
+    { value: "created_at", label: "Date" },
+    { value: "comment_count", label: "Comment count" },
+    { value: "votes", label: "votes" },
+  ];
+
+  const ascDesc = [
+    { value: "asc", label: "Acending" },
+    { value: "desc", label: "Decending" },
+  ];
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchArticles(topic, searchQuery.sort_by, searchQuery.order).then(
+      (result) => {
+        if (result === undefined){
+          setIsError(true)
+          setDisplayError({status: 404, data: { msg: "Not found"}})
+        }
+        setArticles(result);
+        setIsLoading(false);
+      }
+    ).catch((err) => {
+      setIsError(true)
+      setDisplayError(err.response)
+
+    })
+  }, [topic, searchQuery]);
+>>>>>>> Stashed changes
+
+  return isError ? (
+    <div>
+      {alert(`Something went wrong
+              ${displayError.status}
+              ${displayError.data.msg}`)}
+      {window.location = "/home"}
+    </div>
+  ) :
+
+   isLoading ? (
     <div key="loading-state">
       <p>Loading...</p>
     </div>

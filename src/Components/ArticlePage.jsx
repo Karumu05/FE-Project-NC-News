@@ -29,7 +29,7 @@ const ArticlePage = () => {
       setSArticle(result[0][0]);
       setComments(result[1]);
       setIsLoading(false);
-    });
+    })
   }, [deletedComment]);
 
   function handleClick() {
