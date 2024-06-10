@@ -55,17 +55,19 @@ const ArticlePage = () => {
       key={sArticle.title}
       className="grid grid-template-columns: repeat(2, 1fr) gap-1"
     >
-      <div className="flex justify-center w-auto h-auto col-span-2 p-3">
+      <div className="flex justify-center w-auto h-full  p-3 ">
         <img
           className="h-auto max-w-lg rounded-lg"
           src={sArticle.article_img_url}
           alt={sArticle.title}
         />
       </div>
-      <div className="flex items-center flex-shrink text-2xl text-center justify-center ">
+      <div className="flex items-center flex-shrink text-2xl text-center justify-center bg-gray-800 m-4 rounded">
+        <div className="bg-white h-18 m-4 rounded p-4">
         <h1>{sArticle.title}</h1>
+        </div>
       </div>
-      <div className="flex items-center flex-shrink text-2xl text-center justify-center ">
+      <div className="flex items-center flex-shrink text-2xl text-center col-span-2 justify-center bg-gray-800 text-white">
         <h1>Article votes: {votes}</h1>
         <span className="ml-10 border rounded border-lime-500 border-double ring-2 ring-lime-500 bg-gray-800">
           {error ? <p>{error}</p> : null}
@@ -74,10 +76,10 @@ const ArticlePage = () => {
           </button>
         </span>
       </div>
-      <div className="col-span-2 text-center">
+      <div className="col-span-2 text-center bg-gray-800 text-white m-4 p-4 rounded text-xl">
         <p>{sArticle.body}</p>
       </div>
-      <div className="col-span-2">
+      <div className="col-span-2 absolute bottom-2  ">
         <h2>Comment count: {sArticle.comment_count}</h2>
         <div className="flex flex-wrap p-3 h-full justify-evenly">
           {comments.map((comment) => {
@@ -93,7 +95,7 @@ const ArticlePage = () => {
           })}
         </div>
       </div>
-      <div className="col-span-2 card h-auto relative h-100vh ">
+      <div className="col-span-2">
         <AddComment
           key="Add-comments"
           article_id={article_id}
